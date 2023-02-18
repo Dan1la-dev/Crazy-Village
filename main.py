@@ -2,6 +2,7 @@ from app import CrazyVillage
 
 
 def main():
+    # start here
     game = CrazyVillage()
     game.start()
 
