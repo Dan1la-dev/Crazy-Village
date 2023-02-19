@@ -1,6 +1,34 @@
-class CrazyVillage:
-    # start game
-    def start(self):
-        self.get_character()
-        self.get_location()
+from menus.pick_character import pick_character
+from menus.pick_location import pick_location
 
+
+class CrazyVillage:
+    """ The main app class """
+    character = None
+    run_game = True
+
+    def run(self):
+        """ Runs the entire game """
+        while self.run_game:
+            self.__show_menu()
+            self.__choose_location()
+
+    def __show_menu(self):
+        """ Displays the game menu """
+        while True:
+            print('Crazy Village\n'
+                  '[1] Играть\n'
+                  '[2] Выход')
+            action = input('>>> ')
+            if action == '1':
+                self.__set_character()
+                return
+            if action == '2':
+                self.run_game = False
+                return
+
+    def __set_character(self):
+        self.character = pick_character()
+
+    def __choose_location(self):
+        pick_location(self.character)

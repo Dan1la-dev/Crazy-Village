@@ -2,9 +2,8 @@ from app import CrazyVillage
 
 
 def main():
-    # start here
-    game = CrazyVillage()
-    game.start()
+    app = CrazyVillage()
+    app.run()
 
 
 if __name__ == '__main__':

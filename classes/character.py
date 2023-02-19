@@ -1,27 +1,35 @@
 class Character:
-    def __init__(self, dictionary):
-        self.character_name = ""
-        self.character = dictionary["Тип"]
-        self.hp = dictionary["Здоровье"]
-        self.attack = dictionary["Атака"]
-        self.lvl = dictionary["Уровень"]
-        self.defense = dictionary["Защита"]
-        self.inventory = dictionary["Инвентарь"]
-        self.mp = dictionary["Мана"]
-        self.xp = dictionary["Опыт"]
-        self.money = dictionary["Деньги"]
-        self.ultimate = dictionary["Способность"]
+    """ Base character class """
+    def __init__(self):
+        self.alive = True
+        self.name = None
+        self.battle_class = None
+        self.hp = None
+        self.attack = None
+        self.defense = None
+        self.inventory = None
+        self.mp = None
+        self.ultimate = None
+        self.money = 0
+        self.lvl = 1
+        self.xp = 0
 
-    def get_info(self):
-        print('\n⬇️ Ваша статистика ⬇️\n'
-              f'🧑 Имя: {self.character_name}\n'
-              f'🥋 Персонаж: {self.character.character}\n'
-              f'✨ Текущий опыт: {self.character.xp}\n'
-              f'🥇 Текущий уровень: {self.character.lvl}\n'
-              f'❤️ Здоровье: {self.character.hp}\n'
-              f'🗡️ Атака: {self.character.attack}\n'
-              f'🛡️ Защита: {self.character.defense}\n'
-              f'🎒 Инвентарь: {self.character.inventory}\n'
-              f'💧 Мана: {self.character.mp}\n'
-              f'🪙 Деньги: {self.character.money}\n'
-              f'🔥 Способность: {self.character.ultimate}\n')
+    def get_stats(self):
+        print(f'⬇️ Ваша статистика ⬇️')
+        print(f'🧑 Имя: {self.name}')
+        print(f'🥋 Персонаж: {self.battle_class}')
+        print(f'❤️ Здоровье: {self.hp}')
+        print(f'🗡️ Атака: {self.attack}')
+        print(f'🛡️ Защита: {self.defense}')
+        print(f'🥇 Текущий уровень: {self.lvl}')
+        print(f'✨ Текущий опыт: {self.xp}')
+        print(f'🎒 Инвентарь: {self.inventory}')
+        print(f'💧 Мана: {self.mp}')
+        print(f'🪙 Деньги: {self.money}')
+        print(f'🔥 Способность: {self.ultimate}')
+
+    def take_damage(self, damage):
+        self.hp -= damage
+        if self.hp <= 0:
+            print('Ваша мать сдохла')
+            self.alive = False

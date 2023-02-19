@@ -1,7 +1,12 @@
 class Enemy:
-    def __init__(self, dictionary):
-        self.enemy_character = dictionary["Тип"]
-        self.hp = dictionary["Здоровье"]
-        self.attack = dictionary["Атака"]
-        self.defense = dictionary["Защита"]
-        self.ultimate = dictionary["Способность"]
+    def __init__(self):
+        self.alive = True
+        self.type = None
+        self.hp = None
+        self.attack = None
+        self.defense = None
+        self.ultimate = None
+
+    def take_damage(self):
+        if self.hp <= 0:
+            self.alive = False
