@@ -5,11 +5,13 @@ from menus.pick_location import pick_location
 class CrazyVillage:
     """ The main app class """
     character = None
-    location = None
+    run_game = True
 
     def run(self):
         """ Runs the entire game """
-        self.__show_menu()
+        while self.run_game:
+            self.__show_menu()
+            self.__choose_location()
 
     def __show_menu(self):
         """ Displays the game menu """
@@ -20,11 +22,13 @@ class CrazyVillage:
             action = input('>>> ')
             if action == '1':
                 self.__set_character()
+                return
             if action == '2':
+                self.run_game = False
                 return
 
     def __set_character(self):
         self.character = pick_character()
 
     def __choose_location(self):
-        self.location = pick_location(self.character)
+        pick_location(self.character)

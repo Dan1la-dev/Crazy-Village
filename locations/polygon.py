@@ -43,7 +43,7 @@ def polygon(character):
                 print(f'[❗] Ваше ❤️ теперь: {character.hp} единиц')
     else:
         lost_hp = randint(10, 30)
-        character.hp -= lost_hp
+        character.take_damage(lost_hp)
         lost_money = randint(10, character.money)
         character.money -= lost_money
         print(f'👨‍💻 ЛЕВИЙ ➤ Занимающимся в залах злым качкам не понравилось ваше поведение'

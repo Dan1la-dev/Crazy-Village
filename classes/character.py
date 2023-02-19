@@ -26,3 +26,9 @@ class Character:
         print(f'💧 Мана: {self.mp}')
         print(f'🪙 Деньги: {self.money}')
         print(f'🔥 Способность: {self.ultimate}')
+
+    def take_damage(self, damage):
+        self.hp -= damage
+        if self.hp <= 0:
+            print('Ваша мать сдохла')
+

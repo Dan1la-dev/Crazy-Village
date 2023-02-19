@@ -1,6 +1,6 @@
-from characters.warrior import Warrior
-from characters.archer import Archer
-from characters.wizard import Wizard
+from entities.characters.warrior import Warrior
+from entities.characters.archer import Archer
+from entities.characters.wizard import Wizard
 
 
 def pick_character():
