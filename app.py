@@ -1,11 +1,10 @@
-from characters.warrior import Warrior
-from characters.archer import Archer
-from characters.wizard import Wizard
+from menus.pick_character import pick_character
 
 
 class CrazyVillage:
     """ The main app class """
     character = None
+    location = None
 
     def run(self):
         """ Runs the entire game """
@@ -24,21 +23,17 @@ class CrazyVillage:
                 return
 
     def __set_character(self):
-        """ Sets player's character """
-        print("👨‍💻 ЛЕВИЙ ➤ Введите ваше имя\n")
-        name = input('>>> ')
-        while True:
-            print('Выберите класс:')
-            print('1️⃣ Воин 🗡️ - мастер ближнего боя, выносит большое количество урона.')
-            print('2️⃣ Лучник 🏹 - мастер дальнего боя, наносит большой урон на расстоянии.')
-            print('3️⃣ Маг 🪄 - мастер магии, наносит огромный стихийный урон')
-            battle_class = input('>>> ')
-            if battle_class == '1':
-                self.character = Warrior(name)
-                break
-            if battle_class == '2':
-                self.character = Archer(name)
-                break
-            if battle_class == '3':
-                self.character = Wizard(name)
-                break
+        self.character = pick_character()
+
+    def __choose_location(self):
+        print('Вы появляетесь в деревне новичков, выберите, куда вы отправитесь:')
+        print('[1] Таверна')
+        print('[2] Полигон')
+        print('[3] Лес')
+        location = input('➥ ')
+        if location == '1':
+            self.location = tavern.location_tavern()
+        elif location == '2':
+            self.location = polygon.location_polygon()
+        else:
+            self.location = forest.location_forest()

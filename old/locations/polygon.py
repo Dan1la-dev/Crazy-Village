@@ -1,5 +1,4 @@
 from random import randint
-from classes.combat import Combat
 
 trainings_info = {
     "1": [110, 1],
