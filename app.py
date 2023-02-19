@@ -1,4 +1,5 @@
 from menus.pick_character import pick_character
+from menus.pick_location import pick_location
 
 
 class CrazyVillage:
@@ -26,14 +27,4 @@ class CrazyVillage:
         self.character = pick_character()
 
     def __choose_location(self):
-        print('Вы появляетесь в деревне новичков, выберите, куда вы отправитесь:')
-        print('[1] Таверна')
-        print('[2] Полигон')
-        print('[3] Лес')
-        location = input('➥ ')
-        if location == '1':
-            self.location = tavern.location_tavern()
-        elif location == '2':
-            self.location = polygon.location_polygon()
-        else:
-            self.location = forest.location_forest()
+        self.location = pick_location(self.character)

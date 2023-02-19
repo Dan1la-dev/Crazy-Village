@@ -1,4 +1,5 @@
 class Character:
+    """ Base character class """
     def __init__(self):
         self.name = None
         self.battle_class = None
