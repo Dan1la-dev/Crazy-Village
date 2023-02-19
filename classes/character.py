@@ -1,27 +1,27 @@
 class Character:
-    def __init__(self, dictionary):
-        self.character_name = ""
-        self.character = dictionary["Тип"]
-        self.hp = dictionary["Здоровье"]
-        self.attack = dictionary["Атака"]
-        self.lvl = dictionary["Уровень"]
-        self.defense = dictionary["Защита"]
-        self.inventory = dictionary["Инвентарь"]
-        self.mp = dictionary["Мана"]
-        self.xp = dictionary["Опыт"]
-        self.money = dictionary["Деньги"]
-        self.ultimate = dictionary["Способность"]
+    def __init__(self):
+        self.name = None
+        self.battle_class = None
+        self.hp = None
+        self.attack = None
+        self.defense = None
+        self.inventory = None
+        self.mp = None
+        self.ultimate = None
+        self.money = 0
+        self.lvl = 1
+        self.xp = 0
 
-    def get_info(self):
+    def get_stats(self):
         print(f'⬇️ Ваша статистика ⬇️')
-        print(f'🧑 Имя: {self.character_name}')
-        print(f'🥋 Персонаж: {self.character.character}')
-        print(f'✨ Текущий опыт: {self.character.xp}')
-        print(f'🥇 Текущий уровень: {self.character.lvl}')
-        print(f'❤️ Здоровье: {self.character.hp}')
-        print(f'🗡️ Атака: {self.character.attack}')
-        print(f'🛡️ Защита: {self.character.defense}')
-        print(f'🎒 Инвентарь: {self.character.inventory}')
-        print(f'💧 Мана: {self.character.mp}')
-        print(f'🪙 Деньги: {self.character.money}')
-        print(f'🔥 Способность: {self.character.ultimate}')
+        print(f'🧑 Имя: {self.name}')
+        print(f'🥋 Персонаж: {self.battle_class}')
+        print(f'❤️ Здоровье: {self.hp}')
+        print(f'🗡️ Атака: {self.attack}')
+        print(f'🛡️ Защита: {self.defense}')
+        print(f'🥇 Текущий уровень: {self.lvl}')
+        print(f'✨ Текущий опыт: {self.xp}')
+        print(f'🎒 Инвентарь: {self.inventory}')
+        print(f'💧 Мана: {self.mp}')
+        print(f'🪙 Деньги: {self.money}')
+        print(f'🔥 Способность: {self.ultimate}')

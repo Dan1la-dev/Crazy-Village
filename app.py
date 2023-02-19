@@ -1,5 +1,6 @@
-from classes.character import Character
-from entities.characters import *
+from characters.warrior import Warrior
+from characters.archer import Archer
+from characters.wizard import Wizard
 
 
 class CrazyVillage:
@@ -8,9 +9,9 @@ class CrazyVillage:
 
     def run(self):
         """ Runs the entire game """
-        self._show_menu()
+        self.__show_menu()
 
-    def _show_menu(self):
+    def __show_menu(self):
         """ Displays the game menu """
         while True:
             print('Crazy Village\n'
@@ -18,11 +19,11 @@ class CrazyVillage:
                   '[2] Выход')
             action = input('>>> ')
             if action == '1':
-                self._set_character()
+                self.__set_character()
             if action == '2':
                 return
 
-    def _set_character(self):
+    def __set_character(self):
         """ Sets player's character """
         print("👨‍💻 ЛЕВИЙ ➤ Введите ваше имя\n")
         name = input('>>> ')
@@ -33,11 +34,11 @@ class CrazyVillage:
             print('3️⃣ Маг 🪄 - мастер магии, наносит огромный стихийный урон')
             battle_class = input('>>> ')
             if battle_class == '1':
-                self.character = Character(WARRIOR)
+                self.character = Warrior(name)
                 break
             if battle_class == '2':
-                self.character = Character(ARCHER)
+                self.character = Archer(name)
                 break
             if battle_class == '3':
-                self.character = Character(WIZARD)
+                self.character = Wizard(name)
                 break
