@@ -4,7 +4,7 @@ from locations.forest import forest
 
 
 def pick_location(character):
-    while character.hp > 0:
+    while character.alive:
         print('Вы появляетесь в деревне новичков, выберите, куда вы отправитесь:')
         print('[1] Таверна')
         print('[2] Полигон')

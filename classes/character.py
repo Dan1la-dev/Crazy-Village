@@ -1,6 +1,7 @@
 class Character:
     """ Base character class """
     def __init__(self):
+        self.alive = True
         self.name = None
         self.battle_class = None
         self.hp = None
@@ -31,4 +32,4 @@ class Character:
         self.hp -= damage
         if self.hp <= 0:
             print('Ваша мать сдохла')
-
+            self.alive = False
