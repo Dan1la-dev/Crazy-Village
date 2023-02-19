@@ -5,7 +5,6 @@ from random import randint
 from entities.characters import *
 from entities.enemies import *
 
-
 class Menu:
     character = Character(NULL)
     enemy = Enemy(NULL)
