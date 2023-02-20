@@ -1,6 +1,7 @@
 from locations.tavern import tavern
 from locations.polygon import polygon
 from locations.forest import forest
+from menus.pick_enemy import pick_enemy
 
 
 def pick_location(character):
@@ -19,4 +20,4 @@ def pick_location(character):
             else:
                 polygon(character)
         if location == '3':
-            forest(character)
+            forest(character, pick_enemy())
