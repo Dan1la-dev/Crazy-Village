@@ -13,6 +13,7 @@ class CrazyVillage:
         """ Runs the entire game """
         while self.run_game:
             self.__show_menu()
+            self.character.get_stats()
             self.__choose_location()
 
     def __show_menu(self):
@@ -28,6 +29,7 @@ class CrazyVillage:
             if action == '2':
                 self.run_game = False
                 return
+
     def __set_character(self):
         """Sets class object character"""
         self.character = pick_character()
