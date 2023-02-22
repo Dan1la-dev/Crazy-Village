@@ -2,6 +2,7 @@ from app import CrazyVillage
 
 
 def main():
+    """Start here"""
     app = CrazyVillage()
     app.run()
 

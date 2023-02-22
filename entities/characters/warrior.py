@@ -11,5 +11,4 @@ class Warrior(Character):
         self.defense = 10
         self.inventory = ['Карта', 'Зелье здоровья', 'Соль']
         self.mp = 10
-        self.money = 1000
         self.ultimate = 'Землетряс'

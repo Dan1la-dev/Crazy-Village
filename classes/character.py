@@ -1,7 +1,11 @@
+from math import floor
+
+
 class Character:
     """ Base character class """
     def __init__(self):
         self.alive = True
+        self.debt = False
         self.name = None
         self.battle_class = None
         self.hp = None
@@ -28,8 +32,17 @@ class Character:
         print(f'🪙 Деньги: {self.money}')
         print(f'🔥 Способность: {self.ultimate}')
 
-    def take_damage(self, damage):
-        self.hp -= damage
+    def take_damage(self, enemy_damage):
+        self.hp -= enemy_damage
         if self.hp <= 0:
             print('Ваша мать сдохла')
             self.alive = False
+
+    def give_damage(self, enemy_hp, enemy_defense):
+        enemy_hp -= floor(self.attack / (enemy_defense / 100 + 1))
+
+    def spend_money(self, spent_money):
+        self.money -= spent_money
+        if self.money < 0:
+            self.debt = True
+
