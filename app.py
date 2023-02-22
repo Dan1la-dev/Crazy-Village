@@ -12,11 +12,11 @@ class CrazyVillage:
     def run(self):
         """ Runs the entire game """
         while self.run_game:
-            self.__show_menu()
+            self._show_menu()
             self.character.get_stats()
-            self.__choose_location()
+            self._choose_location()
 
-    def __show_menu(self):
+    def _show_menu(self):
         """ Displays the game menu """
         while True:
             print('Crazy Village\n'
@@ -24,20 +24,20 @@ class CrazyVillage:
                   '[2] Выход')
             action = input('>>> ')
             if action == '1':
-                self.__set_character()
+                self._set_character()
                 return
             if action == '2':
                 self.run_game = False
                 return
 
-    def __set_character(self):
+    def _set_character(self):
         """Sets class object character"""
         self.character = pick_character()
 
-    def __set_enemy(self):
+    def _set_enemy(self):
         """Sets class object enemy"""
         self.enemy = pick_enemy()
 
-    def __choose_location(self):
+    def _choose_location(self):
         """Chooses player's location"""
         pick_location(self.character)
