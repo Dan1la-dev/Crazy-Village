@@ -5,6 +5,7 @@ from menus.pick_enemy import pick_enemy
 
 
 def pick_location(character):
+    """Sets player's location"""
     while character.alive:
         print('Вы появляетесь в деревне новичков, выберите, куда вы отправитесь:')
         print('[1] Таверна')

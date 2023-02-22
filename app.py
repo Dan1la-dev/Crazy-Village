@@ -35,6 +35,7 @@ class CrazyVillage:
         self.character = pick_character()
 
     def __set_enemy(self):
+        """Sets class object enemy"""
         self.enemy = pick_enemy()
 
     def __choose_location(self):
