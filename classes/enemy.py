@@ -6,7 +6,6 @@ class Enemy:
         self.attack = None
         self.defense = None
         self.ultimate = None
-
     def take_damage(self):
         if self.hp <= 0:
             self.alive = False

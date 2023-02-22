@@ -2,6 +2,7 @@ class Character:
     """ Base character class """
     def __init__(self):
         self.alive = True
+        self.debt = False
         self.name = None
         self.battle_class = None
         self.hp = None
@@ -33,3 +34,9 @@ class Character:
         if self.hp <= 0:
             print('Ваша мать сдохла')
             self.alive = False
+
+    def spend_money(self, spent_money):
+        self.money -= spent_money
+        if self.money < 0:
+            self.debt = True
+

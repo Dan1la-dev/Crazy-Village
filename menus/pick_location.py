@@ -13,6 +13,10 @@ def pick_location(character):
         if location == '1':
             tavern(character)
         if location == '2':
-            polygon(character)
+            if character.debt:
+                print(f"👨‍💻 ЛЕВИЙ ➤ Охрана полигона не пускает вас из за вашего долга в размере {character.money} 🪙")
+                print("👨‍💻 ЛЕВИЙ ➤ Сказали, что, пустят, когда вы уплатите должок...\n")
+            else:
+                polygon(character)
         if location == '3':
             forest(character)
