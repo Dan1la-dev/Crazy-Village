@@ -8,16 +8,19 @@ def pick_character():
     print("👨‍💻 ЛЕВИЙ ➤ Введите ваше имя")
     name = input('>>> ')
 
-    battle_classes = {
-        '1': Warrior(name),
-        '2': Archer(name),
-        '3': Wizard(name)}
+    available_classes = [
+        {'class': Warrior, 'description': 'маг ближнего боя, выносит большое количество урона.'},
+        {'class': Archer, 'description': 'маг дальнего боя, наносит большой урон на расстоянии.'},
+        {'class': Wizard, 'description': 'мастер магии, наносит огромный стихийный урон.'},
+    ]
 
     while True:
         print('Выберите класс:')
-        print('1️⃣ Воин 🗡️ - мастер ближнего боя, выносит большое количество урона.')
-        print('2️⃣ Лучник 🏹 - мастер дальнего боя, наносит большой урон на расстоянии.')
-        print('3️⃣ Маг 🪄 - мастер магии, наносит огромный стихийный урон')
-        battle_class = input('>>> ')
-        if battle_class in battle_classes.keys():
-            return battle_classes[battle_class]
+
+        for i, battle_class in enumerate(available_classes):
+            print(f'{i+1}️⃣ {battle_class["class"].__name__} 🗡️ - {battle_class["description"]}')
+
+        battle_class_index = input('>>> ')
+        battle_class = available_classes[int(battle_class_index)-1]['class']
+
+        return battle_class(name)
