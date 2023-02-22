@@ -2,6 +2,7 @@ from classes.character import Character
 
 
 class Archer(Character):
+
     def __init__(self, name):
         super().__init__()
         self.name = name

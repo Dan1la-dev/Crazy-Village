@@ -1,26 +1,33 @@
 from random import randint
 
-food_info = {
-    '1': {'price': 10, 'health': 5},  # Meat stew
-    '2': {'price': 2, 'health': 2},   # Kvass mug
+PRICE_KEY = 'price'
+HEALTH_KEY = 'health'
+
+
+FOOD_OPTIONS = {
+    '1️⃣': {PRICE_KEY: 10, HEALTH_KEY: 5},  # Meat stew
+    '2️⃣': {PRICE_KEY: 2, HEALTH_KEY: 2},   # Kvass mug
 }
 
 
-def tavern(player):
+def tavern(character: callable):
     print(f'ЛЕВИЙ ➤ Вы входите в большой дом, около барной стойки стоит хозяин таверны, который предлагает вам обед:')
-    print(f'1️⃣ [Мясное рагу] ➤ {food_info["1"]["price"]} 🪙 ➕ {food_info["1"]["health"]} единиц ❤️')
-    print(f'2️⃣ [Кружка кваса] ➤ {food_info["2"]["price"]} 🪙 ➕ {food_info["2"]["health"]} единиц ❤')
-    meal = input('🡆 ')
 
-    if meal in food_info.keys():
-        if player.money < food_info[meal]['price']:
+    for key, option in FOOD_OPTIONS.items():
+        print(f'{key}️⃣ [{option["name"]}] ➤ {option["price"]} 🪙 ➕ {option["health"]} единиц ❤️')
+
+    meal = input('🡆 ')
+    selected_option = FOOD_OPTIONS[meal]
+
+    if meal in FOOD_OPTIONS.keys():
+        if character.money < selected_option[PRICE_KEY]:
             print('ЛЕВИЙ ➤ Вы нищий, так как вы нищий...')
         else:
-            player.money -= food_info[meal]['price']
-            player.hp += food_info[meal]['health']
-            print(f'[❗] Вы потратили {food_info[meal]["price"]} 🪙 и получили {food_info[meal]["health"]} единиц ❤️')
+            character.spend_money(selected_option[PRICE_KEY])
+            character.hp += selected_option[HEALTH_KEY]
+            print(f'[❗] Вы потратили {selected_option[PRICE_KEY]} 🪙 и получили {selected_option[HEALTH_KEY]} единиц ❤️')
     else:
         print(f'ЛЕВИЙ ➤ За вашу неотесанную грубость хозяин таверны вас прогнал.')
         print(f'ЛЕВИЙ ➤ Похоже, хозяин таверны теперь будет торговать с вами с большей.... наценкой')
-        food_info['1']['price'] += randint(2, 8)
-        food_info['2']['price'] += randint(4, 10)
+        selected_option[PRICE_KEY] += randint(2, 8)
+        selected_option[PRICE_KEY] += randint(4, 10)

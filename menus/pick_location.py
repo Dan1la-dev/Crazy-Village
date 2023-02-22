@@ -11,14 +11,18 @@ def pick_location(character):
         print('[1] Таверна')
         print('[2] Полигон')
         print('[3] Лес')
+
         location = input('➥ ')
+
         if location == '1':
             tavern(character)
-        if location == '2':
+        elif location == '2':
             if character.debt:
                 print(f"👨‍💻 ЛЕВИЙ ➤ Охрана полигона не пускает вас из за вашего долга в размере {character.money} 🪙")
                 print("👨‍💻 ЛЕВИЙ ➤ Сказали, что, пустят, когда вы уплатите должок...\n")
             else:
                 polygon(character)
-        if location == '3':
+        elif location == '3':
             forest(character, pick_enemy())
+        else:
+            print("Неверный ввод. Пожалуйста, выберите 1, 2 или 3.\n")
