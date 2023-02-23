@@ -28,8 +28,8 @@ def forest(character: callable, enemy: callable):
         elif battle_choice == '2':
             print(f"🛡️🛡️🛡️ Вы повысили свою защиту в размере {character.get_defense()} ед")
 
-
         if not enemy.check_hp():
+            battle_info(character, enemy)
             print("👨‍💻 ЛЕВИЙ ➤ Вы победили!!! Вы - настоящий боец")
 
             earned_money = randint(10, 100)
@@ -47,8 +47,6 @@ def forest(character: callable, enemy: callable):
 
         print("👺 Ход врага: \n")
         sleep(0.3)
-        character.take_damage(enemy.attack)
-        battle_info(character, enemy)
 
         if randint(1, 2) == 1:
             character.take_damage(enemy.attack)
@@ -56,7 +54,12 @@ def forest(character: callable, enemy: callable):
             enemy.get_defense()
 
         if not character.check_hp():
+            battle_info(character, enemy)
             break
+
+        battle_info(character, enemy)
+
+
 
 
 
