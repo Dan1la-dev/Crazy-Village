@@ -2,11 +2,12 @@ from classes.character import Character
 
 
 class Archer(Character):
+    battle_class = '🏹 Лучник'
 
     def __init__(self, name):
         super().__init__()
         self.name = name
-        self.battle_class = 'Лучник'
+        self.type = 'Лучник'
         self.hp = 100
         self.attack = 50
         self.defense = 3

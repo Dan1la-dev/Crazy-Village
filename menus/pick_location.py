@@ -2,17 +2,23 @@ from locations.tavern import tavern
 from locations.polygon import polygon
 from locations.forest import forest
 from menus.pick_enemy import pick_enemy
+from typing import NoReturn
 
 
-def pick_location(character):
+def pick_location(character: callable) -> NoReturn:
     """Sets player's location"""
     while character.alive:
-        print('Вы появляетесь в деревне новичков, выберите, куда вы отправитесь:')
-        print('[1] Таверна')
-        print('[2] Полигон')
-        print('[3] Лес')
+        input('🧿 Нажмите Enter для продолжения...')
+        print("\n" * 99999)
 
-        location = input('➥ ')
+        print('👨‍💻 ЛЕВИЙ ➤ Вы появляетесь в деревне новичков, выберите, куда вы отправитесь:')
+        print()
+        print('1️⃣ Таверна 🏠')
+        print('2️⃣ Полигон 💪')
+        print('3️⃣ Лес 🌲')
+        print('4️⃣ Статистика 🔆')
+        print()
+        location = input('>>> ')
 
         if location == '1':
             tavern(character)
@@ -24,5 +30,9 @@ def pick_location(character):
                 polygon(character)
         elif location == '3':
             forest(character, pick_enemy())
+        elif location == '4':
+            character.get_stats()
         else:
-            print("Неверный ввод. Пожалуйста, выберите 1, 2 или 3.\n")
+            print("[❗] Неверный ввод. Повторите попытку...')\n")
+
+

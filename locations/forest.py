@@ -3,33 +3,45 @@ from random import randint
 
 
 def battle_info(character, enemy: callable):
-    print(f"[🧑 ❤️] Ваше здоровье: {character.hp} единиц\t[👺 ❤️] Здоровье врага: {enemy.hp} единиц")
-    print(f"[🧑 🗡️] Ваша атака: {character.attack} единиц  \t[👺 🗡️] Атака врага: {enemy.attack} единиц")
-    print(f"[🧑 🛡️] Ваша защита: {character.defense} единиц  \t[👺 🛡️] Защита врага: {enemy.defense} единиц\n")
+    print()
+    print(f"[🧑 ❤️] Ваше здоровье: {character.hp}\t[👺 ❤️] Здоровье врага: {enemy.hp} ")
+    print(f"[🧑 🗡️] Ваша атака: {character.attack}   \t[👺 🗡️] Атака врага: {enemy.attack} ")
+    print(f"[🧑 🛡️] Ваша защита: {character.defense}   \t[👺 🛡️] Защита врага: {enemy.defense}")
+    print()
 
 
 def forest(character: callable, enemy: callable):
+    input('🧿 Нажмите Enter для продолжения...')
+    print("\n" * 99999)
+
     print('👨‍💻 ЛЕВИЙ ➤ Вы стоите на опушке огромного леса, деревья шумят своими огромными кронами,'
           'тут начинается ваш путь авантюриста...')
     sleep(0.5)
-    print('👨‍💻 ЛЕВИЙ ➤ О НЕТ, ВОЖДЬ! НА ВАС НАПАЛИ!!!')
     print(f"👨‍💻 ЛЕВИЙ ➤ О НЕТ,{character.name} вас атаковал {enemy.type}!")
-    battle_info(character, enemy)
-    print("🧑 Ваш ход: ")
-
-    for move in range(len(character.battle_moves)):
-        print(f'{move + 1}️⃣  {character.battle_moves[move]}')
 
     while True:
-        battle_choice = input("🡆 ")
+        battle_info(character, enemy)
+        print("[🧑] Ваш ход: ")
+        print()
+        for move in range(len(character.battle_moves)):
+            print(f'{move + 1}️⃣  {character.battle_moves[move]}')
+        print()
 
-        if battle_choice == '1':
+        character_move = input(">>> ")
+        print()
+
+        if character_move == '1':
             enemy.take_damage(character.attack)
-        elif battle_choice == '2':
-            print(f"🛡️🛡️🛡️ Вы повысили свою защиту в размере {character.get_defense()} ед")
+            print(f"[🧑] Вы уменьшили 👺 ❤️ с {enemy.hp} >>> {enemy.take_damage(character.attack)}")
 
-        if not enemy.check_hp():
-            battle_info(character, enemy)
+            print(f"[👺 ❤️ ❗] Здоровье врага: {enemy.hp}")
+            print()
+        elif character_move == '2':
+            print(f"[🧑🛡️🛡️] Вы повысили свою 🛡️🛡️🛡️ c {character.defense} >>> {character.get_defense()}")
+
+            print(f"[🧑🛡️❗] Ваша защита: {character.defense}")
+            print()
+        if not enemy.alive:
             print("👨‍💻 ЛЕВИЙ ➤ Вы победили!!! Вы - настоящий боец")
 
             earned_money = randint(10, 100)
@@ -38,26 +50,33 @@ def forest(character: callable, enemy: callable):
             earned_xp = randint(13, 50)
             character.earn_xp(earned_xp)
 
-            print(f"💎 НАГРАДЫ: "
-                  f"➡️ {earned_money} 🪙"
-                  f"➡️ {earned_xp} ✨")
+            print(f"💎 НАГРАДЫ 💎  ")
+            print(f"➡️ {earned_money} 🪙")
+            print(f"➡️ {earned_xp} ✨")
             break
 
-        battle_info(character, enemy)
-
-        print("👺 Ход врага: \n")
+        sleep(5)
+        print("\n" * 99999)
+        print("[👺] Ход врага: \n")
         sleep(0.3)
 
-        if randint(1, 2) == 1:
-            character.take_damage(enemy.attack)
-        elif randint(1, 2) == 2:
-            enemy.get_defense()
+        enemy_move = randint(1, 2)
 
-        if not character.check_hp():
-            battle_info(character, enemy)
+        if enemy_move == 1:
+            print(f"[👺] Враг уменьшил ваше ❤️❤️❤️ с {character.hp} >>> {character.take_damage(enemy.attack)}")
+            print(f"[🧑❤️❗] Ваше здоровье: {character.hp}")
+        elif enemy_move == 2:
+            print(f"[👺] Враг повысил свою 🛡️🛡️🛡️ с {enemy.defense} >>> {enemy.get_defense()}")
+            print(f"[👺🛡️❗] Защита врага: {enemy.defense}")
+
+        if not character.alive:
             break
 
-        battle_info(character, enemy)
+        sleep(5)
+        print("\n" * 99999)
+
+
+
 
 
 
