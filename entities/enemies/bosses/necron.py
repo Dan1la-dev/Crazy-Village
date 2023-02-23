@@ -1,8 +1,8 @@
 from classes.enemy import Enemy
 
 
-class ComradVorobey(Enemy):
-    type = 'КомрадВоробей'
+class Necron(Enemy):
+    type = 'Некрон'
     
     def __init__(self):
         """Initialize inherited enemy's object with default values."""
