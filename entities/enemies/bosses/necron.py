@@ -1,10 +1,12 @@
 from classes.enemy import Enemy
 
 
-class VasifSwine(Enemy):
+class ComradVorobey(Enemy):
+    type = 'КомрадВоробей'
+    
     def __init__(self):
+        """Initialize inherited enemy's object with default values."""
         super().__init__()
-        self.type = 'Васифсвин'
         self.hp = 300
         self.attack = 5
         self.defense = 50

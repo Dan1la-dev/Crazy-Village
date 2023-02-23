@@ -1,10 +1,11 @@
-from entities.enemies.barbarian import Barbarian
-from entities.enemies.ghost import Ghost
-from entities.enemies.goblin import Goblin
-from entities.enemies.vasif_swine import VasifSwine
+from entities.enemies.simple.barbarian import Barbarian
+from entities.enemies.simple.ghost import Ghost
+from entities.enemies.simple.goblin import Goblin
+from entities.enemies.Necron import ComradVorobey
 from random import choice
 
 
 def pick_enemy():
-    enemies = [Barbarian(), Ghost(), Goblin(), VasifSwine()]
+    """Sets enemy"""
+    enemies = [Barbarian(), Ghost(), Goblin(), ComradVorobey()]
     return choice(enemies)
