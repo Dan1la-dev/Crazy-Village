@@ -15,32 +15,52 @@ class CrazyVillage:
         """ Runs the entire game """
         while self.run_game:
             self._show_menu()
-            self.character.get_stats()
             self._choose_location()
             if not self.character.alive:
-                print("[❗] Вы погибли... На сегодня хватит игры?")
-                print("1️⃣ Да \n"
-                      "2️⃣ Нет (любой символ)\n")
-                continued = input('')
+                print()
+                print("[❗] Вы погибли... Играем еще?")
+                print("1️⃣ Да ")
+                print("2️⃣ Нет ")
+                print()
+                continued = input('>>> ')
                 if continued == '1':
+                    continue
+                elif continued == '2':
+                    self.run_game = False
+                    return
+                else:
+                    print("Shapilov 🦌🦌🦌")
                     self.run_game = False
                     return
 
     def _show_menu(self) -> NoReturn:
         """ Displays the game menu """
         while True:
-            print('Crazy Village\n'
-                  '[1] Играть\n'
-                  '[2] Выход')
+            print("\n" * 99999)
+            print()
+            print('👨‍💻 ЛЕВИЙ ➤ Добро пожаловать в игру "Безумный посёлок"')
+            print()
+            print('1️⃣ Играть')
+            print('2️⃣ Выход')
+            print('3️⃣ Информация о игре')
+            print()
             action = input('>>> ')
             if action == '1':
+                print("\n" * 99999)
+                print()
                 self._set_character()
                 return
             elif action == '2':
                 self.run_game = False
                 return
+            elif action == '3':
+                print('🔥🔥 Создатель/разработчик №1🔥🔥: Матвей Пашинин')
+                print('💎💎 Разработчик №2 💎💎: Шапилов Николай')
+                print('🦸🦸 Разработчик №3 🦸🦸: Даниил Лавриненко')
             else:
-                print('Invalid input. Please choose a valid option.')
+                print('[❗] Неверное значение. Повторите попытку...')
+            print()
+            input('🧿 Нажмите Enter для продолжения...')
 
     def _set_character(self) -> NoReturn:
         """Sets class object character"""

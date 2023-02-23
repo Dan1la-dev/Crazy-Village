@@ -12,24 +12,16 @@ class Enemy:
         self.defense = None
         self.ultimate = None
 
-    def get_stats(self) -> NoReturn:
-        print(f'Enemy Type: {self.type}')
-        print(f'HP: {self.hp}')
-        print(f'Attack: {self.attack}')
-        print(f'Defense: {self.defense}')
-        print(f'Ultimate: {self.ultimate}')
-
-    def take_damage(self, character_attack: int) -> NoReturn:
+    def take_damage(self, character_attack: int) -> int:
         damage = floor(character_attack / (self.defense / 100 + 1))
         self.hp -= damage
-
-    def check_hp(self):
         if self.hp <= 0:
             self.hp = 0
             self.alive = False
-        return self.alive
+        return self.hp
 
-    def get_defense(self) -> NoReturn:
-        self.defense += randint(2, 6)
+    def get_defense(self) -> int:
+        self.defense += randint(5, 9)
+        return self.defense
 
 
