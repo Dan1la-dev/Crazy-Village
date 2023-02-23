@@ -17,6 +17,14 @@ class CrazyVillage:
             self._show_menu()
             self.character.get_stats()
             self._choose_location()
+            if not self.character.alive:
+                print("[❗] Вы погибли... На сегодня хватит игры?")
+                print("1️⃣ Да \n"
+                      "2️⃣ Нет (любой символ)\n")
+                continued = input('')
+                if continued == '1':
+                    self.run_game = False
+                    return
 
     def _show_menu(self) -> NoReturn:
         """ Displays the game menu """
