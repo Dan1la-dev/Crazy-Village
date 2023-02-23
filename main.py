@@ -9,7 +9,7 @@ def main():
     try:
         app = CrazyVillage()
         app.run()
-        info('❌ Игра закрылась!')
+        info('✅✅✅ Игра закрылась!')
 
     except Exception as err:
         # Handling exceptions

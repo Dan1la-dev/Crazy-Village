@@ -5,12 +5,13 @@ from typing import NoReturn
 
 class Character:
     battle_class = None
-    """ Base character class """
+
     def __init__(self):
+        """Initialize a character object with default values."""
+
         self.alive = True
         self.debt = False
         self.name = None
-        self.battle_moves = ["Атаковать", "Защититься"]
         self.hp = None
         self.attack = None
         self.defense = None
@@ -22,6 +23,7 @@ class Character:
         self.xp = 0
 
     def get_stats(self) -> NoReturn:
+        """Prints the character's statistics."""
         print()
         print(f'⬇️ Ваша статистика ⬇️')
         print(f'🧑 Имя: {self.name}')
@@ -38,27 +40,35 @@ class Character:
         print()
 
     def take_damage(self, enemy_attack: int) -> int:
+        """Reduce the character's hp by the amount of damage received.
+        :param enemy_attack: The amount of damage the enemy is attacking the character with."""
+
         damage = floor(enemy_attack / (self.defense / 100 + 1))
-        self.hp -= damage
+        self.hp -= damage  # subtract damage from character's hp
         if self.hp <= 0:
             self.hp = 0
-            self.alive = False
+            self.alive = False  # set character's alive state to false
         return self.hp
 
     def get_defense(self) -> int:
+        """Increase the character's defense randomly."""
+
         gotten_defense = randint(9, 20)
-        self.defense += gotten_defense
-        return self.defense
+        self.defense += gotten_defense  # add defense increase to character's defense
 
     def spend_money(self, spent_money: int) -> NoReturn:
+        """Reduce the character's money by the amount spent.
+        :param spent_money: it used to calculate character's balance"""
         self.money -= spent_money
         if self.money < 0:
             self.debt = True
 
     def earn_money(self, earned_money) -> NoReturn:
+        """Increase the character's money by the amount earned.
+         :param earned_money: it used to calculate character's balance"""
         self.money += earned_money
 
     def earn_xp(self, earned_xp) -> NoReturn:
+        """Increase the character's xp by the amount earned.
+         :param earned_xp: it used to calculate character's xp"""
         self.xp += earned_xp
-
-

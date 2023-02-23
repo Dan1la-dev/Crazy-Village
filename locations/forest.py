@@ -1,88 +1,51 @@
 from time import sleep
 from random import randint
+from misc.consts import HEADER, CLEAR_SCREEN, PRESS_ENTER
 
 
-def battle_info(character, enemy: callable):
-    print()
-    print(f"[🧑 ❤️] Ваше здоровье: {character.hp}\t[👺 ❤️] Здоровье врага: {enemy.hp} ")
-    print(f"[🧑 🗡️] Ваша атака: {character.attack}   \t[👺 🗡️] Атака врага: {enemy.attack} ")
-    print(f"[🧑 🛡️] Ваша защита: {character.defense}   \t[👺 🛡️] Защита врага: {enemy.defense}")
-    print()
+def forest(character: callable, enemy: callable, battle_system: callable):
+    """One of three locations
+    :param battle_system: It used to transmit battle class methods
+    :param character: It used to transmit character's params
+    :param enemy: It used to transmit enemy's params"""
 
+    # Prompt user to continue and clear the screen
+    input(f'{PRESS_ENTER} Нажмите Enter для продолжения...')
+    print(CLEAR_SCREEN)
 
-def forest(character: callable, enemy: callable):
-    input('🧿 Нажмите Enter для продолжения...')
-    print("\n" * 99999)
-
-    print('👨‍💻 ЛЕВИЙ ➤ Вы стоите на опушке огромного леса, деревья шумят своими огромными кронами,'
-          'тут начинается ваш путь авантюриста...')
+    # Print location description
+    print(f'{HEADER} вы стоите на опушке огромного леса, деревья шумят своими огромными кронами')
+    print(f'{HEADER} тут начинается ваш путь авантюриста...')
     sleep(0.5)
-    print(f"👨‍💻 ЛЕВИЙ ➤ О НЕТ,{character.name} вас атаковал {enemy.type}!")
 
+    # Introduce the enemy
+    print(HEADER, f'О НЕТ, {character.name}, вас атаковал {enemy.type}!')
+
+    # Start battle loop
     while True:
-        battle_info(character, enemy)
-        print("[🧑] Ваш ход: ")
-        print()
-        for move in range(len(character.battle_moves)):
-            print(f'{move + 1}️⃣  {character.battle_moves[move]}')
-        print()
+        # Display battle information and prompt character to perform an action
+        battle_system.battle_info(character, enemy)
+        battle_system.character_perform(character, enemy)
 
-        character_move = input(">>> ")
-        print()
-
-        if character_move == '1':
-            enemy.take_damage(character.attack)
-            print(f"[🧑] Вы уменьшили 👺 ❤️ с {enemy.hp} >>> {enemy.take_damage(character.attack)}")
-
-            print(f"[👺 ❤️ ❗] Здоровье врага: {enemy.hp}")
-            print()
-        elif character_move == '2':
-            print(f"[🧑🛡️🛡️] Вы повысили свою 🛡️🛡️🛡️ c {character.defense} >>> {character.get_defense()}")
-
-            print(f"[🧑🛡️❗] Ваша защита: {character.defense}")
-            print()
+        # Check if the enemy is defeated
         if not enemy.alive:
-            print("👨‍💻 ЛЕВИЙ ➤ Вы победили!!! Вы - настоящий боец")
-
+            # Print victory message and reward the character
+            print(f'{HEADER} Вы победили!!! Вы - настоящий боец')
             earned_money = randint(10, 100)
             character.earn_money(earned_money)
-
             earned_xp = randint(13, 50)
             character.earn_xp(earned_xp)
+            print(f'💎 НАГРАДЫ 💎  ')
+            print(f'➡️ {earned_money} 🪙')
+            print(f'➡️ {earned_xp} ✨')
+            return
 
-            print(f"💎 НАГРАДЫ 💎  ")
-            print(f"➡️ {earned_money} 🪙")
-            print(f"➡️ {earned_xp} ✨")
-            break
+        # Clear the screen and pause before the enemy's turn
+        battle_system.pause_clear()
 
-        sleep(5)
-        print("\n" * 99999)
-        print("[👺] Ход врага: \n")
-        sleep(0.3)
+        # Enemy performs its action
+        battle_system.enemy_perform(character, enemy)
 
-        enemy_move = randint(1, 2)
-
-        if enemy_move == 1:
-            print(f"[👺] Враг уменьшил ваше ❤️❤️❤️ с {character.hp} >>> {character.take_damage(enemy.attack)}")
-            print(f"[🧑❤️❗] Ваше здоровье: {character.hp}")
-        elif enemy_move == 2:
-            print(f"[👺] Враг повысил свою 🛡️🛡️🛡️ с {enemy.defense} >>> {enemy.get_defense()}")
-            print(f"[👺🛡️❗] Защита врага: {enemy.defense}")
-
+        # Check if the character is defeated
         if not character.alive:
-            break
-
-        sleep(5)
-        print("\n" * 99999)
-
-
-
-
-
-
-
-
-
-
-
-
+            return
