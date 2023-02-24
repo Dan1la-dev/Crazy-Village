@@ -3,7 +3,7 @@ from misc.consts import ALPHABET_RU, ALPHABET_EN, DIGITS, CLEAR_SCREEN, HEADER, 
 
 def pick_character_name():
     """Sets character's name"""
-    lenght = None
+    length = None
     first_symbol = None
     allowed_chars = None
     digits = None
@@ -17,7 +17,7 @@ def pick_character_name():
 
         # It checks if character_name_set has more than 5 symbols
         if len(character_name) > 5:
-            lenght = True
+            length = True
         # It Checks if character_name_set the first symbol is letter
         if character_name[0].isalpha():
             first_symbol = True
@@ -30,14 +30,14 @@ def pick_character_name():
             digits = True
 
         # It checks if all checks are succesfull
-        if lenght and first_symbol and allowed_chars and digits:
+        if length and first_symbol and allowed_chars and digits:
             return character_name
 
         else:
             print()
             print(f'{ATTENTION} Неверный ввод имени. Ваше имя должно удовлетворять условиям: ')
             print()
-            print(f'{YES if lenght else NO} Больше 5 символов ')
+            print(f'{YES if length else NO} Больше 5 символов ')
             print(f'{YES if first_symbol else NO} Первый символ - буква ')
             print(f'{YES if allowed_chars else NO} Не содержать спец символы и пробелы')
             print(f'{YES if digits else NO} Не содержать только цифры ')
