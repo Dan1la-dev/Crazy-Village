@@ -18,17 +18,20 @@ def polygon(character: callable):
     print(f'{HEADER} Вы оказываетесь на большом открытом пространстве, где каждый метр занят тренирующимися людьми.')
     print(f'{HEADER} ➤ К вам подходит человек и представляется тренером, он дает вам выбор:')
     print()
-
-    print(f'{NUMERATION[1]} [Спарринг на мечах ➤ {TRAININGS["1"][PRICE_KEY]} 🪙] ➕ {TRAININGS["1"][DAMAGE_KEY]} единиц 🗡️')
-    print(f'{NUMERATION[2]} [Тренировка подавления урона ➤ {TRAININGS["2"][PRICE_KEY]} 🪙] ➕ {TRAININGS["2"][DEFENSE_KEY]} единиц 🛡️')
-    print(f'{NUMERATION[3]} [Контроль чакры ➤ {TRAININGS["3"][PRICE_KEY]} 🪙] ➕ {TRAININGS["3"][MANA_KEY]} единиц 💧')
-    print(f'{NUMERATION[4]} [Тренировка тела ➤ {TRAININGS["4"][PRICE_KEY]} 🪙] ➕ {TRAININGS["4"][HEALTH_KEY]} единиц ❤️')
+    print(f'{NUMERATION[0]} Выход из локации')
+    print(f'{NUMERATION[1]} Спарринг на мечах >>> {TRAININGS["1"][PRICE_KEY]} 🪙 ➕ {TRAININGS["1"][DAMAGE_KEY]} 🗡️')
+    print(f'{NUMERATION[2]} Подавления урона >>> {TRAININGS["2"][PRICE_KEY]} 🪙] ➕ {TRAININGS["2"][DEFENSE_KEY]} 🛡️')
+    print(f'{NUMERATION[3]} Контроль чакры >>> {TRAININGS["3"][PRICE_KEY]} 🪙 ➕ {TRAININGS["3"][MANA_KEY]} 💧')
+    print(f'{NUMERATION[4]} Тренировка тела >>> {TRAININGS["4"][PRICE_KEY]} 🪙 ➕ {TRAININGS["4"][HEALTH_KEY]} ❤️')
     print()
 
     training = input(PROMPT)
     print()
 
-    if training in TRAININGS.keys():
+    if training == '0':
+        character.location_exit()
+
+    elif training in TRAININGS.keys():
         cost = TRAININGS[training][PRICE_KEY]
         if character.money < cost:
             print(f'{HEADER} Вы нищий, так как вы нищий...')

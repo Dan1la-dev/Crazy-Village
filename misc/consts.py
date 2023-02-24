@@ -10,6 +10,7 @@ NO = '❌'
 ALPHABET_RU = set('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')
 DIGITS = set('0123456789')
 ALPHABET_EN = set('abcdefghijklmnopqrstuvwxyz')
+SPECIAL_SYMBOLS = set('_')
 
 """Dict keys for tavern, polygon"""
 PRICE_KEY = 'price'
