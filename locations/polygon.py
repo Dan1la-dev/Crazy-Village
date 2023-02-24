@@ -19,10 +19,11 @@ def polygon(character: callable):
     print(f'{HEADER} ➤ К вам подходит человек и представляется тренером, он дает вам выбор:')
     print()
 
-    print(f'{NUMERATION[1]} [Спарринг на мечах ➤ {TRAININGS["1"][PRICE_KEY]} 🪙] ➕ {TRAININGS["1"][DAMAGE_KEY]} единиц 🗡️')
-    print(f'{NUMERATION[2]} [Тренировка подавления урона ➤ {TRAININGS["2"][PRICE_KEY]} 🪙] ➕ {TRAININGS["2"][DEFENSE_KEY]} единиц 🛡️')
-    print(f'{NUMERATION[3]} [Контроль чакры ➤ {TRAININGS["3"][PRICE_KEY]} 🪙] ➕ {TRAININGS["3"][MANA_KEY]} единиц 💧')
-    print(f'{NUMERATION[4]} [Тренировка тела ➤ {TRAININGS["4"][PRICE_KEY]} 🪙] ➕ {TRAININGS["4"][HEALTH_KEY]} единиц ❤️')
+    print(f'{NUMERATION[1]} Спарринг на мечах >>> {TRAININGS["1"][PRICE_KEY]} 🪙 ➕ {TRAININGS["1"][DAMAGE_KEY]} 🗡️')
+    print(f'{NUMERATION[2]} Подавления урона >>> {TRAININGS["2"][PRICE_KEY]} 🪙] ➕ {TRAININGS["2"][DEFENSE_KEY]} 🛡️')
+    print(f'{NUMERATION[3]} Контроль чакры >>> {TRAININGS["3"][PRICE_KEY]} 🪙 ➕ {TRAININGS["3"][MANA_KEY]} 💧')
+    print(f'{NUMERATION[4]} Тренировка тела >>> {TRAININGS["4"][PRICE_KEY]} 🪙 ➕ {TRAININGS["4"][HEALTH_KEY]} ❤️')
+    print(f'{NUMERATION[4]} Выход из локации')
     print()
 
     training = input(PROMPT)
