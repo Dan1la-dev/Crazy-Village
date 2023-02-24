@@ -70,3 +70,7 @@ class Character:
         """Increase the character's xp by the amount earned.
          :param earned_xp: it used to calculate character's xp"""
         self.xp += earned_xp
+
+    @staticmethod
+    def location_exit():
+        return

@@ -30,12 +30,16 @@ def tavern(character: callable):
     print(CLEAR_SCREEN)
     print(f'{HEADER} Вы входите в большой дом, около барной стойки стоит хозяин таверны, он предлагает вам обед:')
 
+    print(f'{NUMERATION[0]} Выход из локации')
     for key, option in FOOD_OPTIONS.items():
         print(f"{key}️⃣ [{option['name']}] ➤ {option[PRICE_KEY]} 🪙 ➕ {option[HEALTH_KEY]} единиц ❤️")
     print()
 
     meal = input(PROMPT)
     print()
+
+    if meal == '0':
+        character.location_exit()
 
     try:
         # Attempt to look up the selected option by key
