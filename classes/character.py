@@ -10,7 +10,6 @@ class Character:
         """Initialize a character object with default values."""
 
         self.alive = True
-        self.debt = False
         self.name = None
         self.hp = None
         self.attack = None
@@ -44,24 +43,23 @@ class Character:
         :param enemy_attack: The amount of damage the enemy is attacking the character with."""
 
         damage = floor(enemy_attack / (self.defense / 100 + 1))
-        self.hp -= damage  # subtract damage from character's hp
+        self.hp -= damage
         if self.hp <= 0:
             self.hp = 0
-            self.alive = False  # set character's alive state to false
+            self.alive = False
         return self.hp
 
     def get_defense(self) -> int:
         """Increase the character's defense randomly."""
 
         gotten_defense = randint(9, 20)
-        self.defense += gotten_defense  # add defense increase to character's defense
+        self.defense += gotten_defense
+        return self.defense
 
     def spend_money(self, spent_money: int) -> NoReturn:
         """Reduce the character's money by the amount spent.
         :param spent_money: it used to calculate character's balance"""
         self.money -= spent_money
-        if self.money < 0:
-            self.debt = True
 
     def earn_money(self, earned_money) -> NoReturn:
         """Increase the character's money by the amount earned.
