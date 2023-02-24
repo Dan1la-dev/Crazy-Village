@@ -1,6 +1,7 @@
 from time import sleep
 from random import choice
 from misc.consts import *
+from typing import NoReturn
 
 
 class Battle:
@@ -34,7 +35,7 @@ class Battle:
         sleep(5)
         print(CLEAR_SCREEN)
 
-    def character_perform(self, character: callable, enemy: callable):
+    def character_perform(self, character: callable, enemy: callable) -> NoReturn:
         # Prompt the user for their move and print the available moves
         print("[🧑] Ваш ход: ")
         print()
@@ -59,7 +60,7 @@ class Battle:
             print(f'[🧑🛡️❗] Ваша защита: {character.defense}')
             print()
 
-    def enemy_perform(self, character: callable, enemy: callable):
+    def enemy_perform(self, character: callable, enemy: callable) -> NoReturn:
         # Randomly choose the enemy's move and print it
         print('[👺] Ход врага: \n')
         sleep(0.3)

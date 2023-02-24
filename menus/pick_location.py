@@ -2,7 +2,7 @@ from locations.tavern import tavern
 from locations.polygon import polygon
 from locations.forest import forest
 from menus.pick_enemy import pick_enemy
-from misc.consts import PRESS_ENTER, CLEAR_SCREEN, HEADER, PROMPT, ATTENTION
+from misc.consts import PRESS_ENTER, CLEAR_SCREEN, HEADER, PROMPT, ATTENTION, NUMERATION
 
 
 def pick_location(character: callable, battle_system: callable):
@@ -18,10 +18,10 @@ def pick_location(character: callable, battle_system: callable):
         # Display options for the player to choose from
         print(f'{HEADER} Вы появляетесь в деревне новичков, выберите, куда вы отправитесь:')
         print()
-        print('1️⃣ Таверна 🏠')
-        print('2️⃣ Полигон 💪')
-        print('3️⃣ Лес 🌲')
-        print('4️⃣ Статистика 🔆')
+        print(f'{NUMERATION[1]} Таверна 🏠')
+        print(f'{NUMERATION[2]} Полигон 💪')
+        print(f'{NUMERATION[3]} Лес 🌲')
+        print(f'{NUMERATION[4]} Статистика 🔆')
         print()
 
         # Get the player's input
@@ -32,7 +32,7 @@ def pick_location(character: callable, battle_system: callable):
             tavern(character)
         elif location == '2':
             # Check if the player has a debt
-            if character.debt:
+            if character.money < 0:
                 print(f'{HEADER} Охрана полигона не пускает вас из за вашего долга в размере {character.money} 🪙')
                 print(f'{HEADER} Сказали, что, пустят, когда вы уплатите должок...\n')
             else:

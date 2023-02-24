@@ -32,9 +32,9 @@ class CrazyVillage:
             print()
             print(f'{HEADER} Добро пожаловать в игру "Безумный посёлок')
             print()
-            print('1️⃣ Играть')
-            print('2️⃣ Выход')
-            print('3️⃣ Информация о игре')
+            print(f'{NUMERATION[1]} Играть')
+            print(f'{NUMERATION[2]} Выход')
+            print(f'{NUMERATION[3]} Информация о игре')
             print()
             action = input('>>> ')
             if action == '1':
