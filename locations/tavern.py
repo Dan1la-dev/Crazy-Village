@@ -46,7 +46,6 @@ def tavern(character: callable):
         print(f'{HEADER} Похоже, хозяин таверны теперь будет торговать с вами с большей.... наценкой')
         FOOD_OPTIONS['1'][PRICE_KEY] += randint(2, 8)
         FOOD_OPTIONS['2'][PRICE_KEY] += randint(4, 10)
-
         return
 
     if character.money < selected_option[PRICE_KEY] and not SPECIALS_VALUES['1'][HAVE_FREE_FOOD]:
@@ -59,5 +58,7 @@ def tavern(character: callable):
         character.hp += selected_option[HEALTH_KEY]
         SPECIALS_VALUES['1'][HAVE_FREE_FOOD] = False
 
-        print(f'{ATTENTION} Вы потратили {selected_option[PRICE_KEY]} 🪙 и получили {selected_option[HEALTH_KEY]} единиц ❤️')
+        print(f'{ATTENTION} Вы потратили {selected_option[PRICE_KEY]} 🪙 и получили {selected_option[HEALTH_KEY]} ед ❤️')
         print(f'{ATTENTION} Ваше ❤️ теперь: {character.hp} единиц')
+        FOOD_OPTIONS['1'][PRICE_KEY] = 10
+        FOOD_OPTIONS['2'][PRICE_KEY] = 5

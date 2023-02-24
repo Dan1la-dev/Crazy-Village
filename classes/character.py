@@ -17,7 +17,7 @@ class Character:
         self.inventory = None
         self.mp = None
         self.ultimate = None
-        self.money = 1000
+        self.money = 0
         self.lvl = 1
         self.xp = 0
 

@@ -1,7 +1,8 @@
 from entities.characters.warrior import Warrior
 from entities.characters.archer import Archer
 from entities.characters.wizard import Wizard
-from misc.consts import CLEAR_SCREEN, HEADER, PROMPT, ATTENTION
+from misc.consts import CLEAR_SCREEN, HEADER, PROMPT, ATTENTION, NUMERATION, PRESS_ENTER
+from menus.pick_character_name import pick_character_name
 
 # A list of available character classes with their respective descriptions
 AVAILABLE_CLASSES = [
@@ -44,12 +45,7 @@ def get_class_choice():
 
 def pick_character():
     """Sets player's character"""
-    # Clear the screen and prompt the user for their name
-    print(CLEAR_SCREEN)
-    print(f"{HEADER} Введите ваше имя")
-    print()
-    name = input(PROMPT)
     # Get the user's chosen character class
     battle_class = get_class_choice()
     # Create a new instance of the chosen character class with the user's name and return it
-    return battle_class(name)
+    return battle_class(pick_character_name())

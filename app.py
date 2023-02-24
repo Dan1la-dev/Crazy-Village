@@ -22,6 +22,8 @@ class CrazyVillage:
         """Runs the entire game"""
         while self.run_game:
             self._show_menu()
+            if not self.run_game:
+                return
             self._choose_location()
             self.run_game = death_screen(self.character.alive)
 
@@ -46,6 +48,7 @@ class CrazyVillage:
             elif action == '2':
                 self.run_game = False
                 return
+
             elif action == '3':
                 # display information about the game and its developers
                 devs_info()
