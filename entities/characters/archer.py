@@ -10,8 +10,8 @@ class Archer(Character):
 
         super().__init__()
         self.name = name
-        self.hp = 100
-        self.attack = 50
+        self.hp = 120
+        self.attack = 30
         self.defense = 3
         self.inventory = ['Карта', 'Зелье здоровья', 'Соль']
         self.mp = 30

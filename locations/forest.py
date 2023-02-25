@@ -14,11 +14,12 @@ def forest(character: callable, enemy: callable, battle_system: callable):
     print(CLEAR_SCREEN)
 
     # Print location description
-    print(f'{HEADER} вы стоите на опушке огромного леса, деревья шумят своими огромными кронами')
+    print(f'{HEADER} Вы стоите на опушке огромного леса, деревья шумят своими огромными кронами...')
     print(f'{HEADER} тут начинается ваш путь авантюриста...')
     sleep(0.5)
 
     # Introduce the enemy
+    print()
     print(HEADER, f'О НЕТ, {character.name}, вас атаковал {enemy.type}!')
 
     # Start battle loop
@@ -35,7 +36,9 @@ def forest(character: callable, enemy: callable, battle_system: callable):
             character.earn_money(earned_money)
             earned_xp = randint(13, 50)
             character.earn_xp(earned_xp)
+            print()
             print(f'💎 НАГРАДЫ 💎  ')
+            print()
             print(f'➡️ {earned_money} 🪙')
             print(f'➡️ {earned_xp} ✨')
             return
@@ -45,6 +48,7 @@ def forest(character: callable, enemy: callable, battle_system: callable):
 
         # Enemy performs its action
         battle_system.enemy_perform(character, enemy)
+        battle_system.pause_clear()
 
         # Check if the character is defeated
         if not character.alive:

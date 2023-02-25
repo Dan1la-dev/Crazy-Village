@@ -22,11 +22,17 @@ class Enemy:
         if self.hp <= 0:
             self.hp = 0
             self.alive = False
+        return damage
+
+    def show_hp(self):
         return self.hp
 
     def get_defense(self) -> int:
         """Increase the character's defense randomly."""
+        defense = randint(5, 9)
         self.defense += randint(5, 9)
-        return self.defense
+        return defense
 
+    def show_defense(self):
+        return self.defense
 

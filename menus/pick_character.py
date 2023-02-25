@@ -52,7 +52,6 @@ def get_class_choice():
 
 def pick_character():
     """Sets player's character"""
-    # Get the user's chosen character class
     battle_class = get_class_choice()
     name = pick_character_name()
 

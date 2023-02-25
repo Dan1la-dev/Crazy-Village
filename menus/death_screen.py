@@ -1,4 +1,4 @@
-from misc.consts import ATTENTION, PROMPT
+from misc.consts import ATTENTION, PROMPT, NUMERATION, SHAPILOV
 
 
 def death_screen(character_alive: bool):
@@ -6,15 +6,15 @@ def death_screen(character_alive: bool):
         # ask user if they want to continue or not
         print()
         print(f'{ATTENTION} Вы погибли... Играем еще?')
-        print('1️⃣ Да ')
-        print('2️⃣ Нет ')
+        print(f'{NUMERATION[1]} Да ')
+        print(f'{NUMERATION[2]} Нет ')
         print()
         continued = input(PROMPT)
         if continued == '1':
-            return True
+            pass
         elif continued == '2':
             return False
         else:
             # handle invalid input
-            print("Shapilov 🦌🦌🦌")
+            print(f"Shapilov {SHAPILOV * 3}")
             return False

@@ -47,13 +47,21 @@ class Character:
         if self.hp <= 0:
             self.hp = 0
             self.alive = False
+        return damage
+
+    def show_hp(self) -> int:
+        """Returns character's hp"""
         return self.hp
 
     def get_defense(self) -> int:
         """Increase the character's defense randomly."""
 
-        gotten_defense = randint(9, 20)
-        self.defense += gotten_defense
+        defense = randint(9, 20)
+        self.defense += defense
+        return defense
+
+    def show_defense(self) -> int:
+        """Returns character's defense"""
         return self.defense
 
     def spend_money(self, spent_money: int) -> NoReturn:

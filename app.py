@@ -4,9 +4,8 @@ from menus.pick_enemy import pick_enemy
 from menus.pick_battle_system import pick_battle_system
 from menus.death_screen import death_screen
 from menus.devs_info import devs_info
-
+from menus.welcome import welcome
 from typing import NoReturn
-
 from misc.consts import *
 
 
@@ -30,15 +29,8 @@ class CrazyVillage:
     def _show_menu(self) -> NoReturn:
         """Displays the game menu"""
         while True:
-            print(CLEAR_SCREEN)
-            print()
-            print(f'{HEADER} Добро пожаловать в игру "Безумный посёлок')
-            print()
-            print(f'{NUMERATION[1]} Играть')
-            print(f'{NUMERATION[2]} Выход')
-            print(f'{NUMERATION[3]} Информация о игре')
-            print()
-            action = input('>>> ')
+            welcome()
+            action = input(PROMPT)
             if action == '1':
                 print(CLEAR_SCREEN)
                 print()

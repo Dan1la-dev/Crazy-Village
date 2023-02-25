@@ -23,10 +23,10 @@ class Battle:
         :param enemy: It used to transmit enemy's params"""
         # Print the battle information for the character and enemy
         print()
-        print(f'[🧑 🥋] Ваш персонаж: {character.battle_class}\t[👺 🥋] Тип врага: {enemy.type}')
-        print(f'[🧑 ❤️] Ваше здоровье: {character.hp}  \t[👺 ❤️] Здоровье врага: {enemy.hp} ')
-        print(f'[🧑 🗡️] Ваша атака: {character.attack}     \t[👺 🗡️] Атака врага: {enemy.attack} ')
-        print(f'[🧑 🛡️] Ваша защита: {character.defense}     \t[👺 🛡️] Защита врага: {enemy.defense}')
+        print(f'{CHARACTER_TYPE} Персонаж: {character.battle_class}{TAB * 2}{ENEMY_TYPE} Тип: {enemy.type}')
+        print(f'{CHARACTER_HEART} Здоровье: {character.hp}{TAB * 3}{ENEMY_HEART} Здоровье: {enemy.hp} ')
+        print(f'{CHARACTER_ATTACK} Атака: {character.attack}{TAB * 4}{ENEMY_ATTACK} Атака: {enemy.attack}')
+        print(f'{CHARACTER_DEFENSE} Защита: {character.defense}{TAB * 4}{ENEMY_DEFENSE} Защита: {enemy.defense}')
         print()
 
     @staticmethod
@@ -37,7 +37,7 @@ class Battle:
 
     def character_perform(self, character: callable, enemy: callable) -> NoReturn:
         # Prompt the user for their move and print the available moves
-        print("[🧑] Ваш ход: ")
+        print(f"[{CHARACTER}] Ваш ход: ")
         print()
 
         for move in self.character_battle_moves:
@@ -50,30 +50,29 @@ class Battle:
         # Check the character's move and perform the corresponding action
         if character_move == '1':
             enemy.take_damage(character.attack)
-            print(f'[🧑] Вы уменьшили 👺 ❤️ с {enemy.hp} {PROMPT} {enemy.take_damage(character.attack)}')
-
-            print(f'[👺 ❤️ ❗] Здоровье врага: {enemy.hp}')
+            print(f'{CHARACTER_ATTACK} Вы нанесли {enemy.take_damage(character.attack)} {HEART} врагу.')
+            print(f'{ENEMY_HEART_ATTENTION} Здоровье врага: {enemy.show_hp()}')
             print()
         elif character_move == '2':
-            print(f"[🧑🛡️🛡️] Вы повысили свою 🛡️🛡️🛡️ c {character.defense} {PROMPT} {character.get_defense()}")
+            print(f"{CHARACTER_DEFENSE} Вы укрепились на {character.get_defense()} {DEFENSE}")
 
-            print(f'[🧑🛡️❗] Ваша защита: {character.defense}')
+            print(f'{CHARACTER_DEFENSE_ATTENTION} Ваша защита: {character.show_defense()}')
             print()
 
     def enemy_perform(self, character: callable, enemy: callable) -> NoReturn:
         # Randomly choose the enemy's move and print it
-        print('[👺] Ход врага: \n')
+        print(f'[{ENEMY}] Ход врага: \n')
         sleep(0.3)
 
         enemy_move = choice(list(self.enemy_battle_moves.keys()))
 
         # Check the enemy's move and perform the corresponding action
         if enemy_move == '1':
-            print(f'[👺] Враг уменьшил ваше ❤️❤️❤️ с {character.hp} {PROMPT} {character.take_damage(enemy.attack)}')
-            print(f'[🧑❤️❗] Ваше здоровье: {character.hp}')
+            print(f'{ENEMY_ATTACK} Враг нанес вам: {character.take_damage(enemy.attack)} {HEART}')
+            print(f'{CHARACTER_HEART_ATTENTION} Ваше здоровье: {character.show_hp()}')
         elif enemy_move == '2':
-            print(f'[👺] Враг повысил свою 🛡️🛡️🛡️ с {enemy.defense} {PROMPT} {enemy.get_defense()}')
-            print(f'[👺🛡️❗] Защита врага: {enemy.defense}')
+            print(f'{ENEMY_DEFENSE} Враг укрепился на: {enemy.get_defense()} {DEFENSE}')
+            print(f'{ENEMY_DEFENSE_ATTENTION} Защита врага: {enemy.show_defense()}')
 
 
 

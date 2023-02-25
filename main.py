@@ -1,4 +1,5 @@
 from app import CrazyVillage
+from misc.consts import YES, NO
 
 from logging import basicConfig, INFO, info, error
 basicConfig(level=INFO, format='%(message)s')
@@ -9,11 +10,11 @@ def main():
     try:
         app = CrazyVillage()
         app.run()
-        info('✅✅✅ Игра закрылась!')
+        info(f'{YES * 3} Игра закрылась!')
 
     except Exception as err:
         # Handling exceptions
-        error(f'❌❌❌ Возникла ошибка при запуске игры:')
+        error(f'{NO * 3} Возникла ошибка при запуске игры:')
         error(f'{err}')
         exit(1)
 
