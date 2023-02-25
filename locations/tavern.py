@@ -29,6 +29,7 @@ def tavern(character: callable):
     input(f'{PRESS_ENTER} Нажмите Enter для продолжения...')
     print(CLEAR_SCREEN)
     print(f'{HEADER} Вы входите в большой дом, около барной стойки стоит хозяин таверны, он предлагает вам обед:')
+    print()
 
     print(f'{NUMERATION[0]} Выход из локации')
     for key, option in FOOD_OPTIONS.items():
@@ -39,7 +40,7 @@ def tavern(character: callable):
     print()
 
     if meal == '0':
-        character.location_exit()
+        return
 
     try:
         # Attempt to look up the selected option by key

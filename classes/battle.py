@@ -23,10 +23,15 @@ class Battle:
         :param enemy: It used to transmit enemy's params"""
         # Print the battle information for the character and enemy
         print()
-        print(f'{CHARACTER_TYPE} Персонаж: {character.battle_class}{TAB * 2}{ENEMY_TYPE} Тип: {enemy.type}')
-        print(f'{CHARACTER_HEART} Здоровье: {character.hp}{TAB * 3}{ENEMY_HEART} Здоровье: {enemy.hp} ')
-        print(f'{CHARACTER_ATTACK} Атака: {character.attack}{TAB * 4}{ENEMY_ATTACK} Атака: {enemy.attack}')
-        print(f'{CHARACTER_DEFENSE} Защита: {character.defense}{TAB * 4}{ENEMY_DEFENSE} Защита: {enemy.defense}')
+        print(f'{CHARACTER_TYPE} Персонаж: {character.battle_class}')
+        print(f'{CHARACTER_HEART} Здоровье: {character.hp}')
+        print(f'{CHARACTER_ATTACK} Атака: {character.attack}')
+        print(f'{CHARACTER_DEFENSE} Защита: {character.defense}')
+        print()
+        print(f'{ENEMY_TYPE} Тип: {enemy.type}')
+        print(f'{ENEMY_HEART} Здоровье: {enemy.hp}')
+        print(f'{ENEMY_ATTACK} Атака: {enemy.attack}')
+        print(f'{ENEMY_DEFENSE} Защита: {enemy.defense}')
         print()
 
     @staticmethod

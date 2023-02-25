@@ -2,7 +2,7 @@
 PROMPT = '>>> '
 CLEAR_SCREEN = '\n' * 99999
 HEADER = '👨‍💻 ЛЕВИЙ ➤'
-TAB = '\t'
+TAB = ' '
 GAME_ATTENTION = '[❗]'
 ATTENTION = '❗'
 PRESS_ENTER = '🧿'
@@ -24,7 +24,7 @@ CHARACTER_TYPE = '[🧑 🥋]'
 CHARACTER_HEART = '[🧑 ❤️]'
 CHARACTER_ATTACK = '[🧑 🗡️]'
 CHARACTER_DEFENSE = '[🧑 🛡️]'
-CHARACTER_HEART_ATTENTION = '[🧑 ❤️ ]❗'
+CHARACTER_HEART_ATTENTION = '[🧑 ❤️ ❗]'
 CHARACTER_DEFENSE_ATTENTION = '[🧑 🛡️ ❗]'
 ENEMY_TYPE = '[👺 🥋]'
 ENEMY_HEART = '[👺 ❤️]'
@@ -33,9 +33,7 @@ ENEMY_DEFENSE = '[👺 🛡️]'
 ENEMY_HEART_ATTENTION = '[👺 ❤️ ❗]'
 ENEMY_DEFENSE_ATTENTION = '[👺 🛡️ ❗]'
 
-ALPHABET_RU = set('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')
 DIGITS = set('0123456789')
-ALPHABET_EN = set('abcdefghijklmnopqrstuvwxyz')
 SPECIAL_SYMBOLS = set('_')
 
 """Dict keys for tavern, polygon"""
