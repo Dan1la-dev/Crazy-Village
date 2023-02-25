@@ -10,9 +10,9 @@ class Wizard(Character):
 
         super().__init__()
         self.name = name
-        self.hp = 110
-        self.attack = 30
+        self.hp = 100
+        self.attack = 70
         self.defense = 0
         self.inventory = ['Карта', 'Зелье здоровья', 'Соль']
-        self.mp = 50
+        self.mp = 90
         self.ultimate = 'Землетряс'

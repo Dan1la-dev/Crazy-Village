@@ -10,7 +10,7 @@ class Warrior(Character):
 
         super().__init__()
         self.name = name
-        self.hp = 10
+        self.hp = 150
         self.attack = 10
         self.defense = 10
         self.inventory = ['Карта', 'Зелье здоровья', 'Соль']
