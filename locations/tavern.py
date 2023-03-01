@@ -17,7 +17,7 @@ def tavern(character: callable):
     """One of three locations
     :param character: It used to transmit character's params"""
 
-    if character.money < 0 and SPECIALS_VALUES['0'][FREE_COUNT_FOOD] == 1:
+    if character.money < 0 and SPECIALS_VALUES['0'][FREE_COUNT_FOOD] >= 1:
         SPECIALS_VALUES['1'][HAVE_FREE_FOOD] = True
         print(f'{HEADER} Обобранный и побитый вы приходите в таверну...:')
         sleep(0.3)
@@ -59,7 +59,7 @@ def tavern(character: callable):
 
     else:
         # Subtract the price of the selected option from the player's money and add its health benefit to their health
-        character.money -= selected_option[PRICE_KEY]
+        character.spend_money(selected_option[PRICE_KEY])
         character.hp += selected_option[HEALTH_KEY]
         SPECIALS_VALUES['1'][HAVE_FREE_FOOD] = False
 

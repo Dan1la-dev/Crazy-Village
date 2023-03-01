@@ -2,7 +2,7 @@ from classes.character import Character
 
 
 class Archer(Character):
-    battle_class = '🏹 Лучник'
+    battle_class = 'Лучник'
 
     def __init__(self, name):
         """Initialize inherited character's object with default values.
