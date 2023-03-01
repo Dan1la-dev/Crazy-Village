@@ -11,7 +11,7 @@ def death_screen(character_alive: bool):
         print()
         continued = input(PROMPT)
         if continued == '1':
-            pass
+            return True
         elif continued == '2':
             return False
         else:
