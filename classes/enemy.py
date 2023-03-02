@@ -1,5 +1,4 @@
-from math import floor
-from random import randint
+from typing import NoReturn
 
 
 class Enemy:
@@ -13,26 +12,29 @@ class Enemy:
         self.defense = None
         self.ultimate = None
 
-    def take_damage(self, character_attack: int) -> int:
+    def get_damage(self, character_damage: int) -> NoReturn:
         """Reduce the character's hp by the amount of damage received.
-        :param character_attack: it used to calculate characters's damage to enemy"""
+        :param character_damage: it used to calculate characters's damage to enemy"""
 
-        damage = floor(character_attack / (self.defense / 100 + 1))
-        self.hp -= damage
+        self.hp -= character_damage
         if self.hp <= 0:
             self.hp = 0
             self.alive = False
-        return damage
+
+    def get_defense(self, got_defense) -> NoReturn:
+        """Increase the character's defense randomly."""
+        self.defense += got_defense
 
     def show_hp(self):
         return self.hp
 
-    def get_defense(self) -> int:
-        """Increase the character's defense randomly."""
-        defense = randint(5, 9)
-        self.defense += randint(5, 9)
-        return defense
-
     def show_defense(self):
         return self.defense
+
+    def show_attack(self) -> int:
+        """Returns character's defense"""
+        return self.attack
+
+    def show_type(self):
+        return self.type
 
