@@ -1,11 +1,12 @@
 from random import randint
 from misc.consts import *
+from time import sleep
 
 TRAININGS = {
-    '1': {PRICE_KEY: 110, DAMAGE_KEY: 1},   # Sword sparring
-    '2': {PRICE_KEY: 135, DEFENSE_KEY: 3},  # Damage reduction training
-    '3': {PRICE_KEY: 120, MANA_KEY: 4},     # Mana control
-    '4': {PRICE_KEY: 200, HEALTH_KEY: 2},   # Body fit
+    '1': {PRICE_KEY: 110, DAMAGE_KEY: 1, NAME: 'Спарринг на мечах'},
+    '2': {PRICE_KEY: 135, DEFENSE_KEY: 3, NAME: 'Подавление урона'},
+    '3': {PRICE_KEY: 120, MANA_KEY: 4, NAME: 'Контроль маны'},
+    '4': {PRICE_KEY: 200, HEALTH_KEY: 2, NAME: 'Тренировка тела'}
 }
 
 
@@ -16,61 +17,89 @@ def polygon(character: callable):
     print(CLEAR_SCREEN)
 
     print(f'{HEADER} Вы оказываетесь на большом открытом пространстве, где каждый метр занят тренирующимися людьми.')
-    print(f'{HEADER} ➤ К вам подходит человек и представляется тренером, он дает вам выбор:')
+    sleep(3)
+    print(f'{HEADER} К вам подходит человек и представляется тренером, он дает вам выбор:')
+    sleep(3)
     print()
-    print(f'{NUMERATION[0]} Выход из локации')
-    print(f'{NUMERATION[1]} Спарринг на мечах >>> {TRAININGS["1"][PRICE_KEY]} 🪙 ➕ {TRAININGS["1"][DAMAGE_KEY]} 🗡️')
-    print(f'{NUMERATION[2]} Подавления урона >>> {TRAININGS["2"][PRICE_KEY]} 🪙] ➕ {TRAININGS["2"][DEFENSE_KEY]} 🛡️')
-    print(f'{NUMERATION[3]} Контроль чакры >>> {TRAININGS["3"][PRICE_KEY]} 🪙 ➕ {TRAININGS["3"][MANA_KEY]} 💧')
-    print(f'{NUMERATION[4]} Тренировка тела >>> {TRAININGS["4"][PRICE_KEY]} 🪙 ➕ {TRAININGS["4"][HEALTH_KEY]} ❤️')
+
+    print(f'{TEMP_NUMERATION[0]} Выход из локации')
+    sleep(0.35)
+    for key, value in TRAININGS.items():
+        print(f"{TEMP_NUMERATION[int(key)]} "
+              f"{value.get(NAME)} >>> "
+              f"{value.get(PRICE_KEY, 0)} {MONEY} "
+              f"(➕ {value.get(DAMAGE_KEY, 0)} {ATTACK}|"
+              f"➕ {value.get(DEFENSE_KEY, 0)} {DEFENSE}|"
+              f"➕ {value.get(MANA_KEY, 0)} {MANA}|"
+              f"➕ {value.get(HEALTH_KEY, 0)} {HEART})")
+        sleep(0.35)
+
     print()
 
     training = input(PROMPT)
     print()
 
     if training == '0':
-        character.location_exit()
+        return
 
     elif training in TRAININGS.keys():
         cost = TRAININGS[training][PRICE_KEY]
         if character.money < cost:
             print(f'{HEADER} Вы нищий, так как вы нищий...')
+            sleep(3)
         else:
             if training == '1':
                 character.spend_money(cost)
-                character.attack += TRAININGS['1'][DAMAGE_KEY]
+                got_attack = TRAININGS.get('1').get(DAMAGE_KEY)
+                character.get_attack(got_attack)
 
-                print(f'{ATTENTION} Вы потратили {cost} 🪙 и получили {TRAININGS["1"][DAMAGE_KEY]} единиц 🗡️')
-                print(f'{ATTENTION} Ваша 🗡️ теперь: {character.attack} единиц')
+                print(f'{ATTENTION} Вы потратили {cost} {MONEY} и получили {got_attack} {ATTACK}')
+                sleep(3)
+                print(f'{ATTENTION} Ваша {ATTACK} теперь: {character.attack}')
+                sleep(3)
             elif training == '2':
                 character.spend_money(cost)
-                character.defense += TRAININGS['2'][DEFENSE_KEY]
+                got_defense = TRAININGS.get('2').get(DEFENSE_KEY)
+                character.get_defense(got_defense)
 
-                print(f'{ATTENTION} Вы потратили {cost} 🪙 и получили {TRAININGS["2"][DEFENSE_KEY]} единиц 🛡️')
-                print(f'{ATTENTION} Ваша 🛡️ теперь: {character.defense} единиц')
+                print(f'{ATTENTION} Вы потратили {cost} {MONEY} и получили {got_defense} {DEFENSE}')
+                sleep(3)
+                print(f'{ATTENTION} Ваша {DEFENSE} теперь: {character.defense}')
+                sleep(3)
             elif training == '3':
                 character.spend_money(cost)
-                character.mp += TRAININGS['3'][MANA_KEY]
+                got_mp = TRAININGS.get('3').get(MANA_KEY)
+                character.get_mp(got_mp)
 
-                print(f'{ATTENTION} Вы потратили {cost} 🪙 и получили {TRAININGS["3"][MANA_KEY]} единиц 💧')
-                print(f'{ATTENTION} Ваша 💧 теперь: {character.mp} единиц')
+                print(f'{ATTENTION} Вы потратили {cost} {MONEY} и получили {got_mp} {MANA}')
+                sleep(3)
+                print(f'{ATTENTION} Ваша {MANA} теперь: {character.mp}')
+                sleep(3)
             elif training == '4':
                 character.spend_money(cost)
-                character.hp += TRAININGS['4'][HEALTH_KEY]
+                got_hp = TRAININGS.get('4').get(HEALTH_KEY)
+                character.get_hp(got_hp)
 
-                print(f'{ATTENTION} Вы потратили {cost} 🪙 и получили {TRAININGS["4"][HEALTH_KEY]} единиц ❤️')
-                print(f'{ATTENTION} Ваше ❤️ теперь: {character.hp} единиц')
+                print(f'{ATTENTION} Вы потратили {cost} {MONEY} и получили {got_hp} {HEART}')
+                sleep(3)
+                print(f'{ATTENTION} Ваше {HEART} теперь: {character.hp} ')
+                sleep(3)
     else:
         lost_hp = randint(10, 30)
-        character.take_damage(lost_hp)
+        character.get_damage(lost_hp)
 
-        lost_money = randint(10, 100)
-        character.spend_money(lost_money)
+        print(f'{HEADER} Занимающимся в залах злым качкам не понравилось ваше поведение...')
+        print()
+        sleep(3)
+        print(f'{HEADER} Вам прописали двойной апперкот и дали по печени')
+        sleep(3)
+        print(f'{ATTENTION} Вы потеряли {lost_hp} {HEART}')
+        sleep(3)
+        if randint(1, 3) == 1 and character.show_money() < 0:
+            lost_money = randint(10, 100)
+            character.spend_money(lost_money)
 
-        print(f'{HEADER} Занимающимся в залах злым качкам не понравилось ваше поведение'
-              f'и вам прописали двойной апперкот и после вашего падения у вас выпали 🪙')
-        print(f'[❗] Вы потеряли {lost_hp} единиц ❤️ и {lost_money} 🪙')
-
-        if randint(1, 3) == 1 and character.money < 0:
-            print(f'{HEADER} Так же тренер подал на вас в суд деревни за неправомерное поведение' 
-                  f'и суд выставил на вас долг в размере {-lost_money} ')
+            print(f'{HEADER} Так же тренер подал на вас в суд деревни за неправомерное поведение')
+            sleep(3)
+            print(f'{HEADER} Суд выставил на вас долг в размере {-lost_money} ')
+            sleep(3)

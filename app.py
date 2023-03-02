@@ -1,6 +1,5 @@
 from menus.pick_character import pick_character
 from menus.pick_location import pick_location
-from menus.pick_enemy import pick_enemy
 from menus.pick_battle_system import pick_battle_system
 from menus.death_screen import death_screen
 from menus.devs_info import devs_info
@@ -13,7 +12,6 @@ class CrazyVillage:
     def __init__(self):
         """Initialize the main app class"""
         self.character = None
-        self.enemy = None
         self.battle_system = None
         self.run_game = True
 
@@ -53,10 +51,6 @@ class CrazyVillage:
     def _set_character(self) -> NoReturn:
         """Sets class object character"""
         self.character = pick_character()
-
-    def _set_enemy(self) -> NoReturn:
-        """Sets class object enemy"""
-        self.enemy = pick_enemy()
 
     def _set_battle_system(self) -> NoReturn:
         """Sets class object battle"""

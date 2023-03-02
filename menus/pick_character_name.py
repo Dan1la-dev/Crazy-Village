@@ -1,5 +1,6 @@
-from misc.consts import DIGITS, SPECIAL_SYMBOLS
+from misc.consts import DIGITS, VALID_SYMBOLS
 from misc.consts import CLEAR_SCREEN, HEADER, PROMPT, ATTENTION, NO, PRESS_ENTER
+from time import sleep
 
 
 def pick_character_name():
@@ -19,7 +20,7 @@ def pick_character_name():
         # a string that describes the condition in case it is not met
         conditions = [
             (len(character_name) >= length_limit, f'Больше или равно {length_limit} символам'),
-            (character_name.isalnum() or character_name_set <= SPECIAL_SYMBOLS, 'Не содержать спецсимволы или пробелы'),
+            (character_name.isalnum() or character_name_set <= VALID_SYMBOLS, 'Не содержать спецсимволы или пробелы'),
             (not character_name_set <= DIGITS, 'Не содержать только цифры')
         ]
 
@@ -32,6 +33,7 @@ def pick_character_name():
             # It prints unperforme conditions
             for condition in conditions:
                 if not condition[0]:
+                    sleep(0.2)
                     print(f'{NO} {condition[1]}')
             print()
             input(f'{PRESS_ENTER} Нажмите Enter для продолжения...')

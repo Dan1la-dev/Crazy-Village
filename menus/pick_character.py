@@ -1,9 +1,9 @@
 from entities.characters.warrior import Warrior
 from entities.characters.archer import Archer
 from entities.characters.wizard import Wizard
-from misc.consts import CLEAR_SCREEN, HEADER, PROMPT, ATTENTION, PRESS_ENTER
+from misc.consts import *
 from menus.pick_character_name import pick_character_name
-
+from time import sleep
 
 # A list of available character classes with their respective descriptions
 AVAILABLE_CLASSES = [
@@ -20,7 +20,8 @@ def display_classes():
     print()
     # Print the available character classes with their descriptions
     for i, battle_class in enumerate(AVAILABLE_CLASSES):
-        print(f"{i+1}️⃣ {battle_class['class'].battle_class} - {battle_class['description']}")
+        print(f"{TEMP_NUMERATION[i + 1]}️ {battle_class['class'].battle_class} - {battle_class['description']}")
+        sleep(0.35)
     print()
 
 
@@ -41,8 +42,10 @@ def get_class_choice():
             battle_class = AVAILABLE_CLASSES[index - 1]['class']
         except (ValueError, IndexError):
             # If an error occurs, notify the user and prompt them to try again
+            sleep(0.2)
             print(f'{ATTENTION} Неверное значение. Повторите попытку...')
             print()
+            sleep(0.2)
             input(f'{PRESS_ENTER} Нажмите Enter для продолжения...')
             print(CLEAR_SCREEN)
         else:

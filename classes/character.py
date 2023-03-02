@@ -1,6 +1,6 @@
-from math import floor
-from random import randint
 from typing import NoReturn
+from misc.consts import *
+from time import sleep
 
 
 class Character:
@@ -17,52 +17,59 @@ class Character:
         self.inventory = None
         self.mp = None
         self.ultimate = None
-        self.money = 0
+        self.money = 1000
         self.lvl = 1
         self.xp = 0
 
     def get_stats(self) -> NoReturn:
         """Prints the character's statistics."""
         print()
-        print(f'⬇️ Ваша статистика ⬇️')
-        print(f'🧑 Имя: {self.name}')
-        print(f'🥋 Персонаж: {self.battle_class}')
-        print(f'❤️ Здоровье: {self.hp}')
-        print(f'🗡️ Атака: {self.attack}')
-        print(f'🛡️ Защита: {self.defense}')
-        print(f'🥇 Текущий уровень: {self.lvl}')
-        print(f'✨ Текущий опыт: {self.xp}')
-        print(f'🎒 Инвентарь: {self.inventory}')
-        print(f'💧 Мана: {self.mp}')
-        print(f'🪙 Деньги: {self.money}')
-        print(f'🔥 Способность: {self.ultimate}')
+        print(f'⬇ Ваша статистика ⬇')
+        sleep(0.4)
+        print(f'{CHARACTER} Имя: {self.name}')
+        sleep(0.4)
+        print(f'{TYPE} Персонаж: {self.battle_class}')
+        sleep(0.4)
+        print(f'{HEART} Здоровье: {self.hp}')
+        sleep(0.4)
+        print(f'{ATTACK} Атака: {self.attack}')
+        sleep(0.4)
+        print(f'{DEFENSE} Защита: {self.defense}')
+        sleep(0.4)
+        print(f'{LVL} Текущий уровень: {self.lvl}')
+        sleep(0.4)
+        print(f'{XP} Текущий опыт: {self.xp}')
+        sleep(0.4)
+        print(f'{INVENTORY} Инвентарь: {IN_DEVELOPING}')
+        sleep(0.4)
+        print(f'{MANA} Мана: {IN_DEVELOPING}')
+        sleep(0.4)
+        print(f'{MONEY} Деньги: {self.money}')
+        sleep(0.4)
+        print(f'{FIRE} Способность: {IN_DEVELOPING}')
+        sleep(0.4)
         print()
 
-    def take_damage(self, enemy_attack: int) -> int:
+    def get_damage(self, enemy_damage: int) -> NoReturn:
         """Reduce the character's hp by the amount of damage received.
-        :param enemy_attack: The amount of damage the enemy is attacking the character with."""
-
-        damage = floor(enemy_attack / (self.defense / 100 + 1))
-        self.hp -= damage
+        :param enemy_damage: The amount of damage the enemy is attacking the character with."""
+        self.hp -= enemy_damage
         if self.hp <= 0:
             self.hp = 0
             self.alive = False
-        return damage
 
-    def show_hp(self) -> int:
-        """Returns character's hp"""
-        return self.hp
-
-    def get_defense(self) -> int:
+    def get_defense(self, got_defense) -> NoReturn:
         """Increase the character's defense randomly."""
+        self.defense += got_defense
 
-        defense = randint(9, 20)
-        self.defense += defense
-        return defense
+    def get_hp(self, got_hp) -> NoReturn:
+        self.hp += got_hp
 
-    def show_defense(self) -> int:
-        """Returns character's defense"""
-        return self.defense
+    def get_attack(self, got_attack) -> NoReturn:
+        self.attack += got_attack
+
+    def get_mp(self, got_mp) -> NoReturn:
+        self.mp += got_mp
 
     def spend_money(self, spent_money: int) -> NoReturn:
         """Reduce the character's money by the amount spent.
@@ -79,6 +86,40 @@ class Character:
          :param earned_xp: it used to calculate character's xp"""
         self.xp += earned_xp
 
-    @staticmethod
-    def location_exit():
-        return
+    def show_hp(self) -> int:
+        """Returns character's hp"""
+        return self.hp
+
+    def show_attack(self) -> int:
+        """Returns character's defense"""
+        return self.attack
+
+    def show_defense(self) -> int:
+        """Returns character's defense"""
+        return self.defense
+
+    def show_inventory(self) -> int:
+        """Returns character's defense"""
+        return self.inventory
+
+    def show_mp(self) -> int:
+        """Returns character's defense"""
+        return self.mp
+
+    def show_ultimate(self) -> int:
+        """Returns character's defense"""
+        return self.ultimate
+
+    def show_money(self) -> int:
+        return self.money
+
+    def show_lvl(self) -> int:
+        return self.lvl
+
+    def show_xp(self) -> int:
+        return self.xp
+
+    def show_battle_class(self):
+        return self.battle_class
+
+
