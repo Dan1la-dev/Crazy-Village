@@ -65,13 +65,11 @@ class Battle:
         print()
 
     @staticmethod
-    def sleep_clear(seconds: int) -> NoReturn:
+    def pause(seconds: int) -> NoReturn:
         # Pause the game for 2 seconds and clear the console screen
-        print()
         for i in range(seconds, 0, -1):
             print(f'\r{NOT_PRESS_ENTER} Идет анимация, не нажимайте Enter...', end='')
             sleep(1)
-        print(CLEAR_SCREEN)
         return
 
     def character_perform(self, character: callable, enemy: callable) -> NoReturn:
@@ -86,14 +84,15 @@ class Battle:
         character_move = input(PROMPT)
 
         # Check the character's move and perform the corresponding action
-
         if self.character_battle_moves.get(character_move, '') == 'Атаковать':
+            print(CLEAR_SCREEN)
             got_move_damage = self.calculate_character_damage(character.attack, enemy.defense)
             enemy.get_damage(got_move_damage)
 
             print(f'{CHARACTER_ATTACK} Вы нанесли {got_move_damage} {HEART} врагу.')
             print(f'{ENEMY_HEART_ATTENTION} Здоровье врага: {enemy.show_hp()}')
         elif self.character_battle_moves.get(character_move, '') == 'Защититься':
+            print(CLEAR_SCREEN)
             got_move_defense = self.calculate_character_defense()
             character.get_defense(got_move_defense)
             print(f"{CHARACTER_DEFENSE} Вы укрепились на {got_move_defense} {DEFENSE}")
@@ -111,6 +110,7 @@ class Battle:
 
         # Check the enemy's move and perform the corresponding action
         if self.enemy_battle_moves.get(enemy_move, '') == 'Атаковать':
+            print(CLEAR_SCREEN)
             got_move_damage = self.calculate_enemy_damage(enemy.attack, character.defense)
             character.get_damage(got_move_damage)
 
@@ -118,8 +118,10 @@ class Battle:
             print(f'{CHARACTER_HEART_ATTENTION} Ваше здоровье: {character.show_hp()}')
 
         elif self.enemy_battle_moves.get(enemy_move, '') == 'Защититься':
+            print(CLEAR_SCREEN)
             got_move_defense = self.calculate_enemy_defense()
             enemy.get_defense(got_move_defense)
 
             print(f'{ENEMY_DEFENSE} Враг укрепился на: {got_move_defense} {DEFENSE}')
             print(f'{ENEMY_DEFENSE_ATTENTION} Защита врага: {enemy.show_defense()}')
+

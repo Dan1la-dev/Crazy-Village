@@ -31,6 +31,7 @@ def forest(character: callable, enemy: callable, battle_system: callable):
         # Display battle information and prompt character to perform an action
         battle_system.battle_info(character, enemy)
         battle_system.character_perform(character, enemy)
+        battle_system.pause(2)
         # Check if the enemy is defeated
         if not enemy.alive:
             # Print victory message and reward the character
@@ -67,12 +68,9 @@ def forest(character: callable, enemy: callable, battle_system: callable):
                 print(f"Shapilov {SHAPILOV * 3}")
                 return
 
-        # Clear the screen and pause before the enemy's turn
-        battle_system.sleep_clear(2)
-
         # Enemy performs its action
         battle_system.enemy_perform(character, enemy)
-        battle_system.sleep_clear(2)
+        battle_system.pause(2)
 
         # Check if the character is defeated
         if not character.alive:
