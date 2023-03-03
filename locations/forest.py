@@ -31,7 +31,6 @@ def forest(character: callable, enemy: callable, battle_system: callable):
         # Display battle information and prompt character to perform an action
         battle_system.battle_info(character, enemy)
         battle_system.character_perform(character, enemy)
-        battle_system.pause(2)
         # Check if the enemy is defeated
         if not enemy.alive:
             # Print victory message and reward the character
@@ -70,7 +69,6 @@ def forest(character: callable, enemy: callable, battle_system: callable):
 
         # Enemy performs its action
         battle_system.enemy_perform(character, enemy)
-        battle_system.pause(2)
 
         # Check if the character is defeated
         if not character.alive:

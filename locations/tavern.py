@@ -36,7 +36,7 @@ def tavern(character: callable):
         print(f'{TEMP_NUMERATION[0]} Выход из локации')
         sleep(0.35)
         for key, option in FOOD_OPTIONS.items():
-            print(f"{TEMP_NUMERATION[int(key)]}️ [{option.get(NAME)}] ➤ "
+            print(f"{TEMP_NUMERATION[int(key)]}️ {option.get(NAME)} ➤ "
                   f"{option.get(PRICE_KEY)} 🪙 "
                   f"➕ {option.get(HEALTH_KEY)} ❤️")
             sleep(0.35)

@@ -16,4 +16,3 @@ class Archer(Character):
         self.inventory = ['Карта', 'Зелье здоровья', 'Соль']
         self.mp = 30
         self.ultimate = 'Землетряс'
-

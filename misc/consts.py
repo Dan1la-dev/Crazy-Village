@@ -38,6 +38,7 @@ CHARACTER_ATTACK = '[🧑 🗡️]'
 CHARACTER_DEFENSE = '[🧑 🛡️]'
 CHARACTER_HEART_ATTENTION = '[🧑 ❤️ ❗]'
 CHARACTER_DEFENSE_ATTENTION = '[🧑 🛡️ ❗]'
+CHARACTER_PASS_ATTENTION = '[🧑 💭 ❗]'
 ENEMY_TYPE = '[👺 🥋]'
 ENEMY_HEART = '[👺 ❤️]'
 ENEMY_ATTACK = '[👺 🗡️]'
@@ -59,4 +60,3 @@ HEALTH_KEY = 'health'
 NAME = 'name'
 FREE_COUNT_FOOD = 0
 HAVE_FREE_FOOD = False
-

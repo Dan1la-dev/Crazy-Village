@@ -17,7 +17,7 @@ def polygon(character: callable):
         input(f'{PRESS_ENTER} Нажмите Enter для продолжения...')
         print(CLEAR_SCREEN)
 
-        print(f'{HEADER} Вы оказываетесь на большом открытом пространстве, где каждый метр занят тренирующимися людьми.')
+        print(f'{HEADER} Вы оказываетесь на открытом пространстве, где каждый метр занят тренирующимися людьми.')
         sleep(3)
         print(f'{HEADER} К вам подходит человек и представляется тренером, он дает вам выбор:')
         sleep(3)
@@ -105,6 +105,7 @@ def polygon(character: callable):
                 print(f'{HEADER} Суд выставил на вас долг в размере {-lost_money} ')
                 sleep(3)
         if not character.show_money() < 0:
+            print()
             print(f'{HEADER} Хотите продолжить тренироваться?')
             print()
             print(f'{TEMP_NUMERATION[1]} Да')

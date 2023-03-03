@@ -49,4 +49,5 @@ def pick_location(character: callable, battle_system: callable):
         elif location == '4':
             character.get_stats()
         else:
-            print(f'{GAME_ATTENTION} Неверный ввод. Повторите попытку...')
+            print(f'{GAME_ATTENTION} Неверный ввод. Повторите попытку...'
+                  )
